@@ -1,0 +1,53 @@
+package com.spring.student.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.student.entity.Student;
+import com.spring.student.service.StudentService;
+
+@Controller
+@RequestMapping("students")
+public class StudentController {
+	// @Autowired // ->This process make spring automatically injects the studentService
+	
+	private StudentService studentService;
+
+	public StudentController(StudentService studentService) {
+		this.studentService = studentService;
+	}
+
+	@PostMapping("/saveStudent")
+	public String addStudent(@ModelAttribute("student") Student student) {
+		studentService.addStudent(student);
+		return "redirect:/students";
+	}
+
+	@GetMapping("/students")
+	public String viewHomePage(Model model) {
+		// Fetch all students from H2 and send them to the HTML page under the name
+		// "listStudents"
+		model.addAttribute("listStudents", studentService.findAllStudents());
+
+		// Provide an empty student object for the "Add Student" HTML form to bind to
+		model.addAttribute("student", new Student());
+		return "index"; // Looks for a file named index.html in src/main/resources/templates
+	}
+
+	public Student findById(int stu_id) {
+		return studentService.findById(stu_id);
+	}
+
+	public Student updateById(Student student) {
+		return studentService.updateById(student);
+	}
+
+	public int deleteById(int stu_id) {
+		return studentService.deleteById(stu_id);
+	}
+
+}

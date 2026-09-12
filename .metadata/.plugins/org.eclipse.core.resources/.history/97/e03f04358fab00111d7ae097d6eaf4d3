@@ -1,0 +1,66 @@
+package com.spring.employee.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.spring.employee.model.Employee;
+import com.spring.employee.service.EmployeeService;
+
+@Controller
+//@RequestMapping("/employees")
+public class EmployeeController {
+
+	@Autowired
+	public EmployeeService employeeService;
+
+	@GetMapping("/")
+	public String home() {
+		return "index";
+	}
+
+	@GetMapping("/add")
+	public String showForm(Model model) {
+		model.addAttribute("employee", new Employee());
+		return "addEmployee";
+	}
+
+	@PostMapping("/save")
+	public String saveEmployee(@ModelAttribute Employee employee) {
+//		System.out.println("Emp Id : " + employee.getEmpId() + "Emp Name : " + employee.getEmpName() + "Emp Email : "
+//				+ employee.getEmpEmail() + "Emp Designation : " + employee.getEmpDesignation());
+//		model.addAttribute("employee", employee);
+		employeeService.addEmployee(employee);
+		return "redirect:/";
+	}
+
+}
+
+/**
+ * ModelAttribute => Receives data from UI to Controller. HTML ---> Java Object
+ * Model => Sends data from Controller to UI. Java Object ---> HTML Model =>
+ * Basically Model provides java object to UI, to accept the input data from
+ * user.
+ * 
+ * @RequestParam => Used to get a single value from URL or form. Ex:
+ *               http://localhost:8080/search?name=Teja Difference Between
+ *               RequestParam and PathVarible ?
+ * @RequestParam -> Captures data from the query string. ->If query hase key and
+ *               value that means RequestParam Ex:
+ *               http://localhost:8080/employee?id=101 Ex: Multiple Request
+ *               Params : http://localhost:8080/employee?id=101&name=Teja
+ * 
+ * @PathVariable -> http://localhost:8080/employee/101 -> If query has only
+ *               value then it is PathVariable
+ * @PathVariable => Used to capture values from URL path.. Ex :
+ *               http://localhost:8080/employee/101
+ * 
+ * 
+ *               Visual Representation : User | | V employee-form.html (View) |
+ *               | V EmployeeController (Controller) | |
+ * @ModelAttribute | V Employee (Model) | | model.addAttribute() | V
+ *                 success.html (View)
+ */

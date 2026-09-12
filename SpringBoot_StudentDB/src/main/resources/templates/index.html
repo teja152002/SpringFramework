@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Database UI</title>
+    <!-- CSS styling via web link - no installation needed -->
+    <link rel="stylesheet" href="https://jsdelivr.net">
+</head>
+<body class="container mt-5">
+
+    <div class="row">
+        <!-- LEFT SIDE: Add Student Form -->
+        <div class="col-md-4">
+            <div class="card card-body shadow-sm">
+                <h4>Add New Student</h4>
+                <form th:action="@{/saveStudent}" th:object="${student}" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Student ID</label>
+                        <input type="number" th:field="*{stu_id}" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" th:field="*{stu_name}" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" th:field="*{stu_email}" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Marks</label>
+                        <input type="number" step="0.1" th:field="*{stu_marks}" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Save Student</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: View Database Records Table -->
+        <div class="col-md-8">
+            <div class="card card-body shadow-sm">
+                <h4>Registered Students (H2 Database)</h4>
+                <table class="table table-striped table-hover mt-3">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the database list sent by the controller -->
+                        <tr th:each="s : ${listStudents}">
+                            <td th:text="${s.stu_id}"></td>
+                            <td th:text="${s.stu_name}"></td>
+                            <td th:text="${s.stu_email}"></td>
+                            <td th:text="${s.stu_marks}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

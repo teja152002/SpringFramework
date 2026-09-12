@@ -1,0 +1,16 @@
+spring.application.name=SpringFrontendToBackend_Employee
+
+# H2 database configuration details
+# Database Connection Settings
+spring.datasource.url=jdbc:h2:mem:studentdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+
+# Hibernate/JPA Settings
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+
+# Show SQL queries in your console so you can see what Spring is doing
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true

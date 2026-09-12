@@ -1,0 +1,5 @@
+package com.spring.student.repository;
+
+interface StudentRepository implements Jpa {
+
+}

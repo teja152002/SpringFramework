@@ -1,0 +1,62 @@
+package com.spring.employee.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.spring.employee.model.Employee;
+
+@Controller
+public class EmployeeController {
+
+	@GetMapping("/")
+	public String showForm(Model model) {
+		model.addAttribute("employee", new Employee());
+		return "employee-form";
+	}
+
+	@PostMapping("/save")
+	public String saveEmployee(@ModelAttribute Employee employee, Model model) {
+		System.out.println("Emp Id : " + employee.getEmpId() + "Emp Name : " + employee.getEmpName() + "Emp Email : "
+				+ employee.getEmpEmail() + "Emp Designation : " + employee.getEmpDesignation());
+		model.addAttribute("employee", employee);
+
+		return "success";
+	}
+
+}
+
+/**
+ * ModelAttribute => Receives data from UI to Controller. HTML ---> Java Object
+ * Model => Sends data from Controller to UI. Java Object ---> HTML
+ * Model => Basically Model provides java object to UI, to accept the input data from user.
+ * 
+ * Visual Representation :
+ *                 User
+                  |
+                  |
+                  V
+      employee-form.html
+              (View)
+                  |
+                  |
+                  V
+         EmployeeController
+            (Controller)
+                  |
+                  |
+      @ModelAttribute
+                  |
+                  V
+            Employee
+             (Model)
+                  |
+                  |
+       model.addAttribute()
+                  |
+                  V
+          success.html
+             (View)
+ */

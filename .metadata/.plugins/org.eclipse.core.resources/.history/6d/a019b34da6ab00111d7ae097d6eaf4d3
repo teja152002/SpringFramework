@@ -1,0 +1,72 @@
+# Employee Management System
+
+A simple Employee Management System built using Spring Boot, Spring MVC, Thymeleaf, Spring Data JPA, and H2 Database.
+
+This application demonstrates the complete CRUD (Create, Read, Update, Delete) operations with a frontend developed using Thymeleaf templates and a backend powered by Spring Boot.
+
+---
+
+## Features
+
+✅ Add Employee
+
+✅ Display All Employees
+
+✅ Update Employee Details
+
+✅ Delete Employee
+
+✅ Thymeleaf Integration
+
+✅ Spring Data JPA
+
+✅ H2 In-Memory Database
+
+✅ Responsive UI
+
+✅ MVC Architecture
+
+---
+
+## Technology Stack
+
+### Backend
+- Java 21
+- Spring Boot 4.x
+- Spring MVC
+- Spring Data JPA
+- Hibernate
+
+### Frontend
+- HTML5
+- CSS3
+- Thymeleaf
+
+### Database
+- H2 Database
+
+### Build Tool
+- Maven
+
+---
+
+## Project Architecture
+
+```text
+SpringFrontendToBackend_Employee
+│
+├── src/main/java
+│   │
+│   ├── controller
+│   │     └── EmployeeController.java
+│   │
+│   ├── model
+│   │     └── Employee.java
+│   │
+│   ├── repository
+│   │     └── EmployeeRepository.java
+│   │
+│   ├── service
+│   │     └── EmployeeService.java
+│   │
+│   └── 

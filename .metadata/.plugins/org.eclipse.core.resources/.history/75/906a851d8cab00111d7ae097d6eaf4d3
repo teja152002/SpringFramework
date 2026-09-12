@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            background-color: #0078D7;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #005ea6;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Employee Management System</h1>
+
+    <div class="container">
+
+        <a href="/employees/add" class="btn">
+e
+        </a>
+
+        /employees/update
+            Update Employee
+        </a>
+
+        <a href="/employees/delete    Delete Employee</a>
+
+        <a href="/
+            Display All Employees
+        </a>
+
+    </div>
+
+</body>
+</html>

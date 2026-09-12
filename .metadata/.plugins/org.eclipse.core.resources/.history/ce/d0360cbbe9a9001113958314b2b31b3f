@@ -1,0 +1,22 @@
+package com.spring.student.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+
+public class Student {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int stu_id;
+	
+	private String stu_name;
+	private String stu_email;
+	private double stu_marks;
+	
+	
+
+}

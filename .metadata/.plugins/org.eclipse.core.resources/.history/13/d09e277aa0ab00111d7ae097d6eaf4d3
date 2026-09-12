@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 20px;
+}
+
+h2{
+    text-align:center;
+    color:#333;
+}
+
+table{
+    width:80%;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background-color:#0078D7;
+    color:white;
+}
+
+tr:nth-child(even){
+    background-color:#f2f2f2;
+}
+
+.btn{
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:5px;
+    color:white;
+    font-size:14px;
+}
+
+.update{
+    background-color:orange;
+}
+
+.delete{
+    background-color:red;
+}
+
+.add{
+    background-color:green;
+    display:inline-block;
+    margin:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Employee List</h2>
+
+<div style="text-align:center;">
+    <a th:href="@{/add}" class="btn add">
+        Add Employee
+    </a>
+</div>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Email</th>
+            <th>Designation</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr th:each="employee : ${employees}">
+
+            <td th:text="${employee.empId}"></td>
+
+            <td th:text="${employee.empName}"></td>
+
+            <td th:text="${employee.empEmail}"></td>
+
+            <td th:text="${employee.empDesignation}"></td>
+
+            <td>
+
+                <a th:href="@{/employees/edit/{id}(id=${employee.empId})}"
+                   class="btn update">
+                    Update
+                </a>
+
+                <a th:href="@{/employees/delete/{id}(id=${employee.empId})}"
+                   class="btn delete">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

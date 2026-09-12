@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Database Spring Boot</title>
+</head>
+<body>
+	<a >Add Employee </a>
+</body>
+</html>

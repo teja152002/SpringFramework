@@ -1,0 +1,5 @@
+package com.spring.student.bean;
+
+public class DataInitializer {
+
+}

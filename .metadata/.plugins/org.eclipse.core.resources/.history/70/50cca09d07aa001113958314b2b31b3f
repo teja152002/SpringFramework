@@ -1,0 +1,46 @@
+package com.spring.student.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.student.entity.Student;
+import com.spring.student.repository.StudentRepository;
+
+@Service
+public class StudentService {
+
+	@Autowired
+	private StudentRepository studentRepository;
+
+	public Student addStudent(Student student) {
+		return studentRepository.save(student);
+	}
+
+	public Student findById(int stu_id) {
+		return studentRepository.findById(stu_id).orElse(null);
+	}
+
+	public Student updateById(Student student) {
+		if (studentRepository.existsById(student.getStu_id())) {
+			studentRepository.save(student);
+			return student;
+		}
+		return null;
+	}
+
+	public int deleteById(int stu_id) {
+		if(studentRepository.existsById(stu_id)) {
+			studentRepository.deleteById(stu_id);
+			return 1;
+		}
+		return 0;
+	}
+
+	public List<Student> Object findAllStudents() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

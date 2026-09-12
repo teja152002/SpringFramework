@@ -1,0 +1,12 @@
+package com.spring.employee.model;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Employee {
+	private String name;
+	private String email;
+	private String designation;
+	
+
+}

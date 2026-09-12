@@ -1,0 +1,29 @@
+package com.spring.student.bean;
+
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.spring.student.controller.StudentController;
+import com.spring.student.entity.Student;
+
+@Configuration // Tells Spring to process this class for Beans on startup
+public class DataInitializer {
+
+    @Bean
+    public CommandLineRunner initDatabase(StudentController studentController) {
+        return args -> {
+            System.out.println("====== STARTING DATA SEEDING FROM SEPARATE BEAN ======");
+            
+            Student student1 = new Student(0, "Alice Smith", "alice@example.com", 85.5);
+            Student student2 = new Student(0, "Bob Jones", "bob@example.com", 92.0);
+            
+            studentController.addStudent(student1);
+            studentController.addStudent(student2);
+            
+            System.out.println("====== DATA SEEDING COMPLETE ======");
+        };
+    }
+}
+

@@ -1,0 +1,26 @@
+package com.spring.student.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.spring.student.entity.Student;
+import com.spring.student.service.StudentService;
+
+@Controller
+public class StudentController {
+	//@Autowired
+	private StudentService studentService;
+
+	public Student addStudent(Student student) {
+		return studentService.addStudent(student);
+	}
+
+	public Student findById(int stu_id) {
+		return studentService.findById(stu_id);
+	}
+
+	public Student updateById(Student student) {
+		return studentService.updateById(student);
+	}
+
+}

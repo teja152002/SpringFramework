@@ -1,0 +1,11 @@
+package com.spring.employee.service;
+
+import org.springframework.stereotype.Service;
+
+import com.spring.employee.repository.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+	public EmployeeRepository employeeRepository;
+
+}
