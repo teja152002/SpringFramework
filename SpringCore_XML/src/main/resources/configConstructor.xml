@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<bean id="teacher" class="com.spring.core.object.Teacher">
+		<constructor-arg name="teacherId" value="1001" />
+		<constructor-arg name="teacherName" value="Saraswathi" />
+	</bean>
+
+	<bean id="student1" class="com.spring.core.object.Student">
+		<constructor-arg name="id">
+			<value>101</value>
+		</constructor-arg>
+		<constructor-arg name="name" value="Golu" />
+		<constructor-arg name="subjects">
+			<list>
+				<value>Maths</value>
+				<value>Science</value>
+				<value>Social</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="teacher" />
+	</bean>
+
+	<bean id="student2" class="com.spring.core.object.Student">
+		<constructor-arg name="id">
+			<value>102</value>
+		</constructor-arg>
+		<constructor-arg name="name" value="Bantu" />
+		<constructor-arg name="subjects">
+			<list>
+				<value>Biology</value>
+				<value>English</value>
+				<value>Social</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="teacher" />
+	</bean>
+
+
+</beans>
